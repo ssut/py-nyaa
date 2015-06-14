@@ -65,7 +65,10 @@ def _parse_size(size, fmt='bytes'):
 def _parse_desc(text):
     matches = [m.groupdict() for m in RE_DESC.finditer(text)][0]
     size = _parse_size(float(matches['size']), matches['format'])
-    return (matches['seeders'], matches['leechers'], matches['downloads'], size)
+    return (int(matches['seeders']),
+            int(matches['leechers']),
+            int(matches['downloads']),
+            size)
 
 def _parse_datetime(text):
     dt = datetime.strptime(text, FORMAT_DATETIME)
