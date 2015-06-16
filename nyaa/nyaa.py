@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import requests
 import xmltodict
-from datetime import datetime
+from datetime import datetime, timedelta
 
-from .constants import URL_NYAA, FORMAT_DATETIME, RE_DESC
+from .constants import URL_NYAA, FORMAT_DATETIME, RE_DESC, PY3
 from .constants import SortBy
 from .constants import NyaaResult
 _agent = requests.Session()
@@ -68,8 +68,17 @@ def _parse_desc(text):
     return (int(matches['seeders']),
             int(matches['leechers']),
             int(matches['downloads']),
-            size)
+            int(size))
 
 def _parse_datetime(text):
-    dt = datetime.strptime(text, FORMAT_DATETIME)
+    dt = None
+    if PY3:
+        dt = datetime.strptime(text, FORMAT_DATETIME)
+    else:
+        text, tz = text.rsplit(' ', 1)
+        dt = datetime.strptime(text, FORMAT_DATETIME)
+        tz = int(tz)
+        tz = timedelta(hours=tz / 100, minutes=tz % 100)
+        dt += tz
+
     return dt
