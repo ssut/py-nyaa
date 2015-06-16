@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 def install():
     desc = 'A Python client library for nyaa.se!',
     setup(
-        name='py-nyaa',
+        name='nyaa',
         version='1.0',
         description=desc,
         long_description=desc,
