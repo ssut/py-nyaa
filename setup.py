@@ -2,10 +2,10 @@
 from setuptools import setup, find_packages
 
 def install():
-    desc = 'A Python client library for nyaa.se!',
+    desc = 'A Python client library for nyaa.se!'
     setup(
         name='nyaa',
-        version='1.0',
+        version='1.0.1',
         description=desc,
         long_description=desc,
         author='SuHun Han',
