@@ -4,11 +4,11 @@ import xmltodict
 from datetime import datetime, timedelta
 
 from .constants import URL_NYAA, FORMAT_DATETIME, RE_DESC, PY3
-from .constants import SortBy
+from .constants import SortBy, Filters
 from .constants import NyaaResult
 _agent = requests.Session()
 
-def search(keyword='', offset=1, order='-date'):
+def search(keyword='', offset=1, order='-date', filter='none'):
     sort = order.replace('-', '')
     sorts = SortBy.vars()
     for var in sorts:
@@ -18,6 +18,14 @@ def search(keyword='', offset=1, order='-date'):
     if not isinstance(sort, int):
         return ValueError('The value "order" you passed is not of the correct value.')
 
+    filters = Filters.vars()
+    for var in filters:
+        if var == filter.upper():
+            filter = getattr(Filters, var)
+            break
+    if not isinstance(filter, int):
+        return ValueError('The value "filter" you passed is not of the correct value.')
+
     order = '2' if order[:1] != '-' else ''
     params = {
         'page': 'rss',
@@ -25,6 +33,7 @@ def search(keyword='', offset=1, order='-date'):
         'offset': offset,
         'sort': sort,
         'order': order,
+        'filter': filter,
     }
 
     resp = _agent.get(URL_NYAA, params=params)

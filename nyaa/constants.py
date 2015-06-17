@@ -23,5 +23,16 @@ class SortBy:
 
     @classmethod
     def vars(cls):
-        local = [var for var in dir(cls) if not callable(var) and not '_' in var]
+        local = [var for var in dir(cls) if not callable(var) and not var.startswith('_')]
+        return local
+
+class Filters:
+    NONE = 0
+    REMAKRS = 1
+    TRUSTED = 2
+    A_PLUS = 3
+
+    @classmethod
+    def vars(cls):
+        local = [var for var in dir(cls) if not callable(var) and not var.startswith('_')]
         return local
