@@ -5,7 +5,7 @@ def install():
     desc = 'A Python client library for nyaa.se!'
     setup(
         name='nyaa',
-        version='1.0.1',
+        version='1.1',
         description=desc,
         long_description=desc,
         author='SuHun Han',
