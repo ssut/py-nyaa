@@ -38,7 +38,13 @@ def search(keyword='', offset=1, order='-date', filter='none'):
 
     resp = _agent.get(URL_NYAA, params=params)
     xml = xmltodict.parse(resp.text)
-    items = xml['rss']['channel']['item']
+    try:
+        items = xml['rss']['channel']['item']
+    except KeyError:
+        return []
+
+    if 'title' in items:
+        items = [items]
 
     results = []
     for item in items:
