@@ -8,7 +8,13 @@ from .constants import SortBy, Filters
 from .constants import NyaaResult
 _agent = requests.Session()
 
-def search(keyword='', offset=1, order='-date', filter='none'):
+def search(keyword='', offset=1, **kwargs):
+    order = kwargs.get('order', '-date')
+    filter = kwargs.get('filter', 'none')
+    user = kwargs.get('user', '')
+    if isinstance(user, int):
+        user = str(user)
+
     sort = order.replace('-', '')
     sorts = SortBy.vars()
     for var in sorts:
@@ -34,6 +40,7 @@ def search(keyword='', offset=1, order='-date', filter='none'):
         'sort': sort,
         'order': order,
         'filter': filter,
+        'user': user,
     }
 
     resp = _agent.get(URL_NYAA, params=params)
