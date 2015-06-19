@@ -54,11 +54,22 @@ Out[3]:
  NyaaResult(title=u'[HorribleSubs] Seraph of the End - 11 [720p].mkv', category=u'English-translated Anime', link=u'http://www.nyaa.se/?page=download&tid=700949', guid=u'http://www.nyaa.se/?page=view&tid=700949', date=datetime.datetime(2015, 6, 13, 14, 0, 30), seeders=1061, leechers=48, downloads=31345, size=463470592)] 
 ```
 
+User filter (e.g. HorribleSubs):
+
+```python
+In [4]: nyaa.search('fate stay night', user=64513)[:3]
+Out[4]:
+[NyaaResult(title='[HorribleSubs] Fate Stay Night - Unlimited Blade Works - 23 [1080p].mkv', category='English-translated Anime', link='http://www.nyaa.se/?page=download&tid=701031', guid='http://www.nyaa.se/?page=view&tid=701031', date=datetime.datetime(2015, 6, 13, 17, 33, 58, tzinfo=datetime.timezone.utc), seeders=801, leechers=13, downloads=24306, size=567803904),
+ NyaaResult(title='[HorribleSubs] Fate Stay Night - Unlimited Blade Works - 23 [720p].mkv', category='English-translated Anime', link='http://www.nyaa.se/?page=download&tid=701028', guid='http://www.nyaa.se/?page=view&tid=701028', date=datetime.datetime(2015, 6, 13, 17, 30, 40, tzinfo=datetime.timezone.utc), seeders=1153, leechers=31, downloads=38020, size=337956045),
+ NyaaResult(title='[HorribleSubs] Fate Stay Night - Unlimited Blade Works - 23 [480p].mkv', category='English-translated Anime', link='http://www.nyaa.se/?page=download&tid=701027', guid='http://www.nyaa.se/?page=view&tid=701027', date=datetime.datetime(2015, 6, 13, 17, 30, 36, tzinfo=datetime.timezone.utc), seeders=236, leechers=15, downloads=10286, size=153616384)]
+```
+
+
  Trusted Only or A+ Only:
  
 ```python
-In [4]: nyaa.search('fate stay night', filter='a_plus')[:5]
-Out[4]:
+In [5]: nyaa.search('fate stay night', filter='a_plus')[:5]
+Out[5]:
 [NyaaResult(title='[UTW]_Fate_stay_night_Unlimited_Blade_Works_-_22_[h264-720p][0FF31339].mkv', category='English-translated Anime', link='http://www.nyaa.se/?page=download&tid=699412', guid='http://www.nyaa.se/?page=view&tid=699412', date=datetime.datetime(2015, 6, 8, 13, 24, 11, tzinfo=datetime.timezone.utc), seeders=168, leechers=2, downloads=11318, size=288987546),
  NyaaResult(title='[UTW]_Fate_stay_night_Unlimited_Blade_Works_-_21_[h264-720p][25371AA1].mkv', category='English-translated Anime', link='http://www.nyaa.se/?page=download&tid=698248', guid='http://www.nyaa.se/?page=view&tid=698248', date=datetime.datetime(2015, 6, 5, 12, 49, 24, tzinfo=datetime.timezone.utc), seeders=137, leechers=4, downloads=9715, size=467140608),
  NyaaResult(title='[UTW]_Fate_stay_night_Unlimited_Blade_Works_-_20_[h264-720p][A1CCC196].mkv', category='English-translated Anime', link='http://www.nyaa.se/?page=download&tid=696241', guid='http://www.nyaa.se/?page=view&tid=696241', date=datetime.datetime(2015, 5, 30, 13, 11, 8, tzinfo=datetime.timezone.utc), seeders=114, leechers=2, downloads=10618, size=441660211),
